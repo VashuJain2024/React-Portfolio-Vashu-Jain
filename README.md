@@ -62,15 +62,13 @@ git clone https://github.com/VashuJain2024/React-Portfolio-Vashu-Jain.git
 cd React-Portfolio-Vashu-Jain
 npm install
 npm run dev
-```
-
-Your app will be available at: [http://localhost:5173](http://localhost:5173)
+``` 
 
 ---
 
-## 🖼️ Screenshots
+<!-- ## 🖼️ Screenshots
 
-> 📸 Add screenshots of your Hero section, Projects grid, and Contact form here to show off your site.
+> 📸 Add screenshots of your Hero section, Projects grid, and Contact form here to show off your site. -->
 
 ---
 
