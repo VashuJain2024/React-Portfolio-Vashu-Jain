@@ -1,4 +1,5 @@
 import { Briefcase, Code, User } from "lucide-react";
+import { Link } from "react-scroll";
 
 export const AboutSection = () => {
   const handleDownload = (e) => {
@@ -44,9 +45,15 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
+              <Link
+                to="contact"
+                smooth={true}
+                duration={600}
+                className="cosmic-button cursor-pointer"
+              >
                 Get In Touch
-              </a>
+              </Link>
+
 
               <a
                 href="/Resume.pdf"

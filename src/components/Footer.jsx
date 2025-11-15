@@ -8,7 +8,7 @@ export const Footer = () => {
       <p className="text-sm text-muted-foreground flex items-center gap-1.5">
         {" "}
         &copy; {new Date().getFullYear()}. Made with <Heart size={18} className="text-red-500" />
-        by Vashu Jain. All rights reserved.
+        by Vashu Jain. 
       </p>
       <Link
         to="home"
