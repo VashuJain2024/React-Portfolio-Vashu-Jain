@@ -63,8 +63,8 @@ cd React-Portfolio-Vashu-Jain
 npm install
 npm run dev
 ``` 
-
----
+<!-- 
+--- -->
 
 <!-- ## 🖼️ Screenshots
 
