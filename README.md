@@ -1,10 +1,10 @@
-# Build a Modern Portfolio Website with React & TailwindCSS
+# Modern Portfolio Website with React & TailwindCSS
 
 ## 🚀 Introduction
 
-A modern and responsive portfolio built using React, TailwindCSS, Vite, and Lucide Icons.
-This site showcases my projects, skills, and experience with smooth animations, dark mode support, and a clean UI.
-Designed for both recruiters and developers, it reflects my approach to building fast, elegant, and user-focused web applications.
+* A sleek and fully-responsive personal portfolio built with React, Vite, TailwindCSS, and Lucide Icons.
+This website highlights my projects, skills, and journey as a developer, combined with smooth animations, clean UI, and a focus on performance.
+* Crafted to be fast, minimal, and user-friendly, this portfolio represents my approach to building modern web experiences—with attention to detail, elegant design, and scalable code.
 
 ---
 
