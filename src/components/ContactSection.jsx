@@ -74,7 +74,7 @@ export const ContactSection = () => {
                   <h4 className="font-medium text-left">Email</h4>
                   <a
                     href="mailto:jainvashu8533@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors text-left"
                   >
                     jainvashu8533@gmail.com
                   </a>
@@ -90,7 +90,7 @@ export const ContactSection = () => {
                   <h4 className="font-medium text-left">Phone</h4>
                   <a
                     href="tel:+918533834787"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors text-left"
                   >
                     +91 85338 34787
                   </a>
@@ -104,7 +104,7 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-left">Location</h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-left">
                     KIET Group of Institutions, Ghaziabad, India
                   </p>
                 </div>
@@ -160,7 +160,7 @@ export const ContactSection = () => {
 
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-left">
                   Your Name
                 </label>
                 <input
@@ -175,7 +175,7 @@ export const ContactSection = () => {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-left">
                   Your Email
                 </label>
                 <input
@@ -192,7 +192,7 @@ export const ContactSection = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-sm font-medium mb-2 text-left"
                 >
                   Your Message
                 </label>

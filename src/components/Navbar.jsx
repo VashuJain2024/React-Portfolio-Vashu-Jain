@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -30,13 +31,13 @@ export const Navbar = () => {
         isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between w-full">
         <Link
           to="home"
           smooth={true}
           duration={600}
           offset={0}
-          className="text-xl font-bold text-primary flex items-center cursor-pointer"
+          className="text-xl font-bold text-primary flex items-center cursor-pointer flex-1"
         >
           <span className="relative z-10">
             <span className="text-foreground">&lt;</span>
@@ -62,21 +63,30 @@ export const Navbar = () => {
               {item.name}
             </Link>
           ))}
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
 
         {/* mobile nav */}
 
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
+        <div className="z-50">
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 text-foreground z-50"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+          </button>
+
+          {/* Theme Toggle */}
+          {!isMenuOpen && (<ThemeToggle />)}
+        </div>
+
 
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-[var(--color-primary)] backdrop-blur-lg z-40 flex flex-col items-center justify-center p-[30px] h-fit",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
@@ -85,14 +95,17 @@ export const Navbar = () => {
         >
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item, key) => (
-              <a
+              <Link
                 key={key}
-                href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                to={item.href.replace("#", "")}   // remove the # for react-scroll target
+                smooth={true}
+                duration={600}
+                spy={true}
                 onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
