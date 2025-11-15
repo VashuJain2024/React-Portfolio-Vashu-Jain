@@ -63,27 +63,27 @@ export const Navbar = () => {
               {item.name}
             </Link>
           ))}
-
           {/* Theme Toggle */}
           <ThemeToggle />
         </div>
 
-        {/* mobile nav */}
+        {/* MOBILE NAV BUTTON + THEME TOGGLE */}
+        <div className="z-50 md:hidden flex items-center gap-3">
+          {/* Theme toggle visible only on mobile */}
+          <ThemeToggle className="md:hidden" />
 
-        <div className="z-50">
+          {/* Hamburger Menu Button */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 text-foreground z-50"
+            className="p-2 text-foreground"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          {/* Theme Toggle */}
-          {!isMenuOpen && (<ThemeToggle />)}
         </div>
 
 
+        {/* MOBILE MENU OVERLAY */}
         <div
           className={cn(
             "fixed inset-0 bg-[var(--color-primary)] backdrop-blur-lg z-40 flex flex-col items-center justify-center p-[30px] h-fit",
@@ -97,7 +97,7 @@ export const Navbar = () => {
             {navItems.map((item, key) => (
               <Link
                 key={key}
-                to={item.href.replace("#", "")}   // remove the # for react-scroll target
+                to={item.href.replace('#', '')}
                 smooth={true}
                 duration={600}
                 spy={true}
