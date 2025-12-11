@@ -1,68 +1,124 @@
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-scroll";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export const HeroSection = () => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [0, 500], [15, -15]);
+  const rotateY = useTransform(x, [0, 500], [-15, 15]);
+
+  function handleMouse(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    x.set(event.clientX - rect.left);
+    y.set(event.clientY - rect.top);
+  }
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      onMouseMove={handleMouse}
     >
       <div className="container max-w-5xl mx-auto text-center z-10 flex gap-10 md:gap-20 flex-col md:flex-row items-center md:items-center pt-30 pb-40 justify-center">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="block sm:inline"
+            >
+              Hi, I'm
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-primary block sm:inline"
+            >
               {" "}
               Vashu
-            </span>
-            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-gradient ml-2 block sm:inline"
+            >
               {" "}
               Jain
-            </span>
+            </motion.span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+          >
             I create stellar web experiences with modern technologies.
             Specializing in front-end development, I build interfaces that are
             both beautiful and functional.
-          </p>
+          </motion.p>
 
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="pt-4"
+          >
             <Link
               to="projects"
               smooth={true}
               duration={600}
-              className="cosmic-button cursor-pointer"
+              className="cosmic-button cursor-pointer inline-block"
             >
               View My Work
             </Link>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="w-[500px] h-[500px] md:w-[1500px] md:h-[400px] lg:w-[1450px] lg:h-[450px] [perspective:1000px]">
-          {/* <div className="relative w-full h-full transition-transform duration-1000 [transform-style:preserve-3d] group hover:[transform:rotateY(180deg)]"> */}
-          <div className="absolute inset-0 backface-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] shrink-0"
+        >
+          <motion.div
+            animate={{ y: [-10, 10] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "mirror",
+              duration: 3,
+              ease: "easeInOut",
+            }}
+            className="w-full h-full"
+          >
             <img
               src="/Me.png"
               alt="Profile Picture"
-              className="object-cover w-full h-full rounded-full border-4 border-primary"
+              className="object-cover w-full h-full rounded-full border-4 border-primary shadow-[0_0_30px_rgba(236,72,153,0.3)]"
             />
-          </div>
-          {/* <div className="absolute inset-0 flex items-center justify-center bg-red-500 text-white font-bold text-2xl rounded-full border-4 border-primary [transform:rotateY(180deg)] backface-hidden">
-              <img
-                src="/Me.png"
-                alt="Profile Picture"
-                className="object-cover w-full h-full rounded-full border-4 border-primary"
-              />
-            </div> */}
-          {/* </div> */}
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+      >
         <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
-        <ArrowDown className="h-5 w-5 text-primary" />
-      </div>
-    </section >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <ArrowDown className="h-5 w-5 text-primary" />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };

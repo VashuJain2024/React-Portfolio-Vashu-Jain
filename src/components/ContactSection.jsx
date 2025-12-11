@@ -11,6 +11,8 @@ import {
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Reveal } from "./ui/Reveal";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -50,18 +52,28 @@ export const ContactSection = () => {
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary">Touch</span>
-        </h2>
+        <Reveal width="100%">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+            Get In <span className="text-shimmer">Touch</span>
+          </h2>
+        </Reveal>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Have a project in mind or want to collaborate? Feel free to reach out.
-          I'm always open to discussing new opportunities.
-        </p>
+        <Reveal width="100%">
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Have a project in mind or want to collaborate? Feel free to reach out.
+            I'm always open to discussing new opportunities.
+          </p>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* -------- Left: Contact Info -------- */}
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
             <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
 
             <div className="space-y-6">
@@ -115,40 +127,50 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4 text-center">Connect With Me</h4>
               <div className="flex space-x-5 justify-center">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.2, rotate: 5 }}
                   href="https://www.linkedin.com/in/vashujain/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Linkedin className="hover:text-primary transition-colors" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.2, rotate: -5 }}
                   href="https://github.com/VashuJain2024"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Github className="hover:text-primary transition-colors" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.2, rotate: 5 }}
                   href="https://x.com/VashuJain377894"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Twitter className="hover:text-primary transition-colors" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.2, rotate: -5 }}
                   href="https://www.instagram.com/vashu_jain9897/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Instagram className="hover:text-primary transition-colors" />
-                </a>
+                </motion.a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* -------- Right: Contact Form -------- */}
-          <div className="bg-card p-8 rounded-lg shadow-xs">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="bg-card p-8 rounded-lg shadow-xs"
+          >
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -163,12 +185,13 @@ export const ContactSection = () => {
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-left">
                   Your Name
                 </label>
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.01, borderColor: "hsl(var(--primary))" }}
                   type="text"
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   placeholder="Your Full Name..."
                 />
               </div>
@@ -178,12 +201,13 @@ export const ContactSection = () => {
                 <label htmlFor="email" className="block text-sm font-medium mb-2 text-left">
                   Your Email
                 </label>
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.01, borderColor: "hsl(var(--primary))" }}
                   type="email"
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   placeholder="example@gmail.com"
                 />
               </div>
@@ -196,17 +220,20 @@ export const ContactSection = () => {
                 >
                   Your Message
                 </label>
-                <textarea
+                <motion.textarea
+                  whileFocus={{ scale: 1.01, borderColor: "hsl(var(--primary))" }}
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none transition-all"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
 
               {/* Button */}
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
@@ -216,9 +243,9 @@ export const ContactSection = () => {
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

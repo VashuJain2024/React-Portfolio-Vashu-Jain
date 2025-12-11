@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { ThemeToggle } from "./ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -15,15 +16,17 @@ const navItems = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       className={cn(
@@ -39,13 +42,16 @@ export const Navbar = () => {
           offset={0}
           className="text-xl font-bold text-primary flex items-center cursor-pointer flex-1"
         >
-          <span className="relative z-10">
+          <motion.span
+            className="relative z-10 flex items-center"
+            whileHover={{ scale: 1.05 }}
+          >
             <span className="text-foreground">&lt;</span>
             <span className="text-glow text-primary">Vashu</span>
             <span className="text-foreground">/</span>
             <span className="text-glow text-primary">Jain</span>
             <span className="text-foreground">&gt;</span>
-          </span>
+          </motion.span>
         </Link>
 
         {/* desktop nav */}
@@ -53,14 +59,23 @@ export const Navbar = () => {
           {navItems.map((item, key) => (
             <Link
               key={key}
-              to={item.href.replace("#", "")}   // removes '#' for react-scroll
+              to={item.href.replace("#", "")}
               smooth={true}
               duration={600}
               offset={0}
               spy={true}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300 hover:scale-105 cursor-pointer"
+              onMouseEnter={() => setHoveredIndex(key)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="relative text-foreground/80 hover:text-primary transition-colors duration-300 cursor-pointer"
             >
               {item.name}
+              {hoveredIndex === key && (
+                <motion.span
+                  layoutId="hover-underline"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
             </Link>
           ))}
           {/* Theme Toggle */}
@@ -84,31 +99,33 @@ export const Navbar = () => {
 
 
         {/* MOBILE MENU OVERLAY */}
-        <div
-          className={cn(
-            "fixed inset-0 bg-[var(--color-primary)] backdrop-blur-lg z-40 flex flex-col items-center justify-center p-[30px] h-fit",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-background/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center p-8 md:hidden"
+            >
+              <div className="flex flex-col space-y-8 text-xl text-center">
+                {navItems.map((item, key) => (
+                  <Link
+                    key={key}
+                    to={item.href.replace('#', '')}
+                    smooth={true}
+                    duration={600}
+                    spy={true}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-foreground/80 hover:text-primary transition-colors duration-300 cursor-pointer text-2xl font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
           )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
-              <Link
-                key={key}
-                to={item.href.replace('#', '')}
-                smooth={true}
-                duration={600}
-                spy={true}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 cursor-pointer"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </div>
+        </AnimatePresence>
       </div>
     </nav>
   );
