@@ -224,25 +224,27 @@ html {
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(236, 72, 153, 0.6)] hover:scale-105 active:scale-95 relative overflow-hidden;
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:scale-105 active:scale-95 relative overflow-hidden;
 }
 
-@utility cosmic-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
+@layer components {
+  .cosmic-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
 
-@utility cosmic-button:hover::before {
-  width: 300px;
-  height: 300px;
+  .cosmic-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 @utility star {
