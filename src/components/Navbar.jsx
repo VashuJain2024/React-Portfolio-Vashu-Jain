@@ -30,8 +30,8 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300 backdrop-blur-xs",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-50 transition-all duration-300 bg-background/80 backdrop-blur-md",
+        isScrolled ? "py-3 shadow-xs" : "py-5"
       )}
     >
       <div className="container flex items-center justify-between w-full">
@@ -40,7 +40,7 @@ export const Navbar = () => {
           smooth={true}
           duration={600}
           offset={0}
-          className="text-xl font-bold text-primary flex items-center cursor-pointer flex-1"
+          className="text-lg sm:text-xl font-bold text-primary flex items-center cursor-pointer flex-1"
         >
           <motion.span
             className="relative z-10 flex items-center"
@@ -83,7 +83,7 @@ export const Navbar = () => {
         </div>
 
         {/* MOBILE NAV BUTTON + THEME TOGGLE */}
-        <div className="z-50 md:hidden flex items-center gap-3">
+        <div className="z-[70] md:hidden flex items-center gap-3">
           {/* Theme toggle visible only on mobile */}
           <ThemeToggle className="md:hidden" />
 
@@ -106,7 +106,7 @@ export const Navbar = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-background/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center p-8 md:hidden"
+              className="fixed inset-0 bg-background backdrop-blur-lg z-[60] flex flex-col items-center justify-center p-45 md:hidden"
             >
               <div className="flex flex-col space-y-8 text-xl text-center">
                 {navItems.map((item, key) => (

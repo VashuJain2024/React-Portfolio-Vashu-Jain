@@ -18,12 +18,12 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-6 overflow-hidden"
       onMouseMove={handleMouse}
     >
-      <div className="container max-w-5xl mx-auto text-center z-10 flex gap-10 md:gap-20 flex-col md:flex-row items-center md:items-center pt-30 pb-40 justify-center">
+      <div className="container max-w-5xl mx-auto text-center z-10 flex gap-8 md:gap-12 lg:gap-20 flex-col md:flex-row items-center md:items-center py-20 md:py-24 lg:py-32 justify-center">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <h1 className="text-6xl font-bold tracking-tight">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
             I create stellar web experiences with modern technologies.
             Specializing in front-end development, I build interfaces that are
@@ -84,7 +84,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] shrink-0"
+          className="w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] shrink-0"
         >
           <motion.div
             animate={{ y: [-10, 10] }}
@@ -109,7 +109,7 @@ export const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
         <motion.div

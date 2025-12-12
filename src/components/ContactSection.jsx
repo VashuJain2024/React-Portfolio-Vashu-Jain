@@ -50,10 +50,10 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
+    <section id="contact" className="py-12 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <Reveal width="100%">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Get In <span className="text-shimmer">Touch</span>
           </h2>
         </Reveal>
@@ -65,7 +65,7 @@ export const ContactSection = () => {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* -------- Left: Contact Info -------- */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -74,7 +74,7 @@ export const ContactSection = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-6">Contact Information</h3>
 
             <div className="space-y-6">
               {/* Email */}
@@ -126,7 +126,7 @@ export const ContactSection = () => {
             {/* Social Links */}
             <div className="pt-8">
               <h4 className="font-medium mb-4 text-center">Connect With Me</h4>
-              <div className="flex space-x-5 justify-center">
+              <div className="flex space-x-4 md:space-x-5 justify-center">
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   href="https://www.linkedin.com/in/vashujain/"
@@ -169,9 +169,9 @@ export const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-card p-8 rounded-lg shadow-xs"
+            className="bg-card p-6 md:p-8 rounded-lg shadow-xs"
           >
-            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-6">Send a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <input

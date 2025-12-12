@@ -38,8 +38,8 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
+    <section id="projects" className="py-12 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 relative">
+      <div className="container mx-auto max-w-7xl">
         <Reveal width="100%">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
             {" "}
@@ -48,7 +48,7 @@ export const ProjectsSection = () => {
         </Reveal>
 
         <Reveal width="100%" delay={0.4}>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">
             Here are some of my recent projects. Each project was carefully
             crafted with attention to detail, performance, and user experience.
           </p>
@@ -67,7 +67,7 @@ export const ProjectsSection = () => {
               }
             }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-300"
         >
           {projects.map((project) => (
             <motion.div
@@ -77,7 +77,7 @@ export const ProjectsSection = () => {
                 visible: { opacity: 1, y: 0 }
               }}
               whileHover={{ y: -5 }}
-              className="h-full"
+              className="h-full min-h-full"
             >
               <SpotlightCard className="h-full bg-card/50 backdrop-blur-sm border-white/10" spotlightColor="hsl(347.37deg 15.97% 53.33% / 0.25)">
                 <div className="h-48 overflow-hidden relative border-b border-white/5">

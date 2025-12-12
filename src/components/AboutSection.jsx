@@ -20,15 +20,15 @@ export const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="py-24 px-4 relative">
+    <section id="about" className="py-12 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 relative">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center">
           About <span className="text-shimmer"> Me</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-gradient">
+            <h3 className="text-xl sm:text-2xl font-semibold text-gradient">
               Full Stack Web Developer & Lifelong Learner
             </h3>
 
@@ -44,7 +44,7 @@ export const AboutSection = () => {
               consistency in my projects and growth journey.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center sm:justify-start">
               <Link
                 to="contact"
                 smooth={true}
